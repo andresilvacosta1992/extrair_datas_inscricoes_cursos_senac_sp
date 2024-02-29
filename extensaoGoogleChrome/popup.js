@@ -1,47 +1,43 @@
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    const captureButton = document.getElementById('captureButton');
-    captureButton.addEventListener('click', captureInformation);
-  });
-  
-  function captureInformation() {
-    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
-      chrome.scripting.executeScript({
-        target: { tabId: tabs[0].id },
-        function: captureAndStoreInformation
-      });
-    });
-  }
-  
-  function captureAndStoreInformation() {
-    var enderecoUnidade = document.querySelector('.ssp-ofertas__endereco-unidade').textContent.trim();
-    var periodoCurso = document.querySelector('.ssp-card-oferta-curso__item-data-periodo').textContent.trim();
-    var diaEHora = document.querySelector('.ssp-card-oferta-curso__dia-hora-item__dia').textContent.trim();
-    var dataInscricao = document.querySelector('.ssp-container-botao-bolsa').textContent.trim();
-    var valoresSeparadosPorVirgula = enderecoUnidade + '|||' + periodoCurso + '|||' + diaEHora + '|||' + dataInscricao;
-    console.log(valoresSeparadosPorVirgula);
-  
-    
+// Captura o título da página
+var title = document.title;
 
-    // Armazenar no Local Storage
-    chrome.storage.local.get('capturedInformation', function(data) {
-      let capturedInformation = data.capturedInformation || [];
-      capturedInformation.push(valoresSeparadosPorVirgula);
-      chrome.storage.local.set({ 'capturedInformation': capturedInformation });
-    });
-  }
+// Exibe o título no console
+console.log("Título da página:", title);
+
+// Captura o título da página ativa
+chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  var activeTab = tabs[0];
+  var title = activeTab.title;
+  console.log("Título da página ativa2:", title);
+
+  // Acessa o documento da guia ativa usando o objeto activeTab
+  var enderecoUnidade = activeTab.document.querySelector('.ssp-ofertas__endereco-unidade')
+  console.log("Endereço da unidade:", enderecoUnidade);
+
+
+});
+
   
-  // Armazenar dados no armazenamento local
-localStorage.setItem('chave', 'valor');
-
-// Recuperar dados do armazenamento local
-const valorArmazenado = localStorage.getItem('chave');
-
-// Log das operações
-console.log('Dados armazenados:', localStorage);
-console.log('Valor recuperado:', valorArmazenado);
 
 let testeImpressao = document.getElementById('testeImpressao');
     testeImpressao.innerHTML = localStorage;
+
+
+    // Captura o título da página ativa
+chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+  var activeTab = tabs[0];
+  var title = activeTab.title;
+  console.log("Título da página ativa:", title);
+
+  // Acessa o documento da guia ativa usando o objeto activeTab
+  chrome.scripting.executeScript({
+    target: { tabId: activeTab.id },
+    function: () => {
+      console.log("Esta mensagem será impressa no console da página ativa.");
+    }
+  });
+});
+
 
