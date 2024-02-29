@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const captureButton = document.getElementById('captureButton');
     captureButton.addEventListener('click', captureInformation);
@@ -20,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var valoresSeparadosPorVirgula = enderecoUnidade + '|||' + periodoCurso + '|||' + diaEHora + '|||' + dataInscricao;
     console.log(valoresSeparadosPorVirgula);
   
+    
+
     // Armazenar no Local Storage
     chrome.storage.local.get('capturedInformation', function(data) {
       let capturedInformation = data.capturedInformation || [];
@@ -28,3 +32,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // Armazenar dados no armazenamento local
+localStorage.setItem('chave', 'valor');
+
+// Recuperar dados do armazenamento local
+const valorArmazenado = localStorage.getItem('chave');
+
+// Log das operações
+console.log('Dados armazenados:', localStorage);
+console.log('Valor recuperado:', valorArmazenado);
+
+let testeImpressao = document.getElementById('testeImpressao');
+    testeImpressao.innerHTML = localStorage;
+
