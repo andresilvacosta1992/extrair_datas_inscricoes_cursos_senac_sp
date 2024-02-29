@@ -1,62 +1,88 @@
-// ==UserScript==
-// @name         Teste Console Log
-// @namespace    http://tampermonkey.net/
-// @version      0.1
-// @description  Imprime "teste" no console de todas as páginas
-// @author       Você
-// @match        https://www.sp.senac.br/*
-// @grant        none
-// ==/UserScript==
+    // ==UserScript==
+    // @name         Teste Console Log
+    // @namespace    http://tampermonkey.net/
+    // @version      0.1
+    // @description  Imprime "teste" no console de todas as páginas
+    // @author       Você
+    // @match        https://www.sp.senac.br/*
+    // @grant        none
+    // ==/UserScript==
 
-(function() {
-    'use strict';
 
-    // Função para lidar com a captura de dados e armazenamento no localStorage
-    function captureDataAndStore() {
-        var enderecoUnidade = document.querySelector('.ssp-ofertas__endereco-unidade');
-        var periodoCurso = document.querySelector('.ssp-card-oferta-curso__item-data-periodo');
-        var diaEHora = document.querySelector('.ssp-card-oferta-curso__dia-hora-item__dia');
-        var dataInscricao = document.querySelector('.ssp-container-botao-bolsa');
-        var cargaHoraria = document.querySelector('.ssp-card-detalhe-curso__secundary-info-carga-horaria');
+    (function() {
+        'use strict';
 
-        // Verificar e substituir por "sem informações" se a string estiver vazia
-        enderecoUnidade = enderecoUnidade ? enderecoUnidade.textContent.trim() : 'sem informações';
-        periodoCurso = periodoCurso ? periodoCurso.textContent.trim() : 'sem informações';
-        diaEHora = diaEHora ? diaEHora.textContent.trim() : 'sem informações';
-        dataInscricao = dataInscricao ? dataInscricao.textContent.trim() : 'sem informações';
-        cargaHoraria = cargaHoraria ? cargaHoraria.textContent.trim() : 'sem informações';
+        // Função para lidar com a captura de dados e armazenamento no localStorage
+        function captureDataAndStore() {
+            var enderecoUnidadeElement = document.querySelector('.ssp-ofertas__box-endereco-unidade a');
+            var enderecoUnidade = enderecoUnidadeElement.textContent;
+            console.log('endereco: ' + enderecoUnidade);
 
-        // Capturar o título da página
-        var tituloPagina = document.title;
+            var periodoCurso = document.querySelector('.ssp-card-oferta-curso__item-data-periodo').textContent;
+            console.log('Período: ' + periodoCurso);
+        
+            var diaEHora = document.querySelector('.ssp-card-oferta-curso__dia-hora-item__dia').textContent;
+            console.log('dia e hora: ' + diaEHora);
 
-        // Imprimir no console
-        console.log('endereco: ' + enderecoUnidade);
-        console.log('periodo: ' + periodoCurso);
-        console.log('dia e hora: ' + diaEHora);
-        console.log('dataInscrição: ' + dataInscricao);
-        console.log('cargahoraria: ' + cargaHoraria);
+            var dataInscricao = document.querySelector('.ssp-container-botao-bolsa').textContent;
+            console.log('dataInscrição: ' + dataInscricao);
 
-        // Concatenar os valores capturados em uma única string separada por vírgulas
-        var valoresSeparadosPorVirgula = `${tituloPagina}|||${enderecoUnidade}|||${periodoCurso}|||${diaEHora}|||${dataInscricao}|||${cargaHoraria}`;
+            var cargaHoraria = document.querySelector('.ssp-card-detalhe-curso__secundary-info-carga-horaria').textContent;
+            console.log('cargahoraria: ' + cargaHoraria);
 
-        // Verificar se já existem resultados no localStorage
-        var resultados = localStorage.getItem('resultados');
+            var tituloPagina = document.title;
+            console.log('título: ' + tituloPagina);
 
-        // Se já houver resultados, adicionar os novos resultados aos existentes
-        if (resultados) {
-            resultados += `\n${valoresSeparadosPorVirgula}`;
-        } else {
-            resultados = valoresSeparadosPorVirgula;
+
+            // Concatenar os valores capturados em uma única string separada por vírgulas
+            var valoresSeparadosPorVirgula = `${tituloPagina}|||${enderecoUnidade}|||${periodoCurso}|||${diaEHora}|||${dataInscricao}|||${cargaHoraria}`;
+
+            // Verificar se já existem resultados no localStorage
+            var resultados = localStorage.getItem('resultados');
+
+            // Se já houver resultados, adicionar os novos resultados aos existentes
+            if (resultados) {
+                resultados += `\n${valoresSeparadosPorVirgula}`;
+            } else {
+                resultados = valoresSeparadosPorVirgula;
+            }
+
+            // Armazenar os resultados atualizados no localStorage
+            localStorage.setItem('resultados', resultados);
+            console.log('[[salvando dados em localstorage]]');
         }
 
-        // Armazenar os resultados atualizados no localStorage
-        localStorage.setItem('resultados', resultados);
-        console.log('[[salvando dados em localstorage]]');
-    }
+        function testePeriodo() {
+            var periodoCurso = document.querySelector('.ssp-card-oferta-curso__item-data-periodo');
 
-    // Aguardar um atraso antes de capturar os dados e armazenar no localStorage
-    setTimeout(function() {
-        // Capturar dados e armazenar no localStorage após o atraso
-        captureDataAndStore();
-    }, 3000); // Ajuste o valor do intervalo de tempo conforme necessário (em milissegundos)
-})();
+
+            if (!periodoCurso || periodoCurso.textContent === "") {
+                console.log("[false] O Periodo não possui conteúdo, não prosseguir com script");            
+
+            } else {
+                console.log("[true] O Periodo possui conteúdo, prosseguir com script");
+                captureDataAndStore()
+
+            }
+
+        }
+
+
+        function checkForSpecificObject() {
+            var enderecoUnidadeElement = document.querySelector('.ssp-ofertas__endereco-unidade');
+
+            if (!enderecoUnidadeElement || enderecoUnidadeElement.textContent.trim() === "") {
+                console.log("[false] O endereço não possui conteúdo, não prosseguir com script");
+            
+
+            } else {
+                console.log("[true] O endereço possui conteúdo, prosseguir com script");
+                testePeriodo()
+            }
+        }
+
+        // Aguardar um atraso antes de verificar se o objeto específico está presente e capturar os dados
+        setTimeout(function() {
+           checkForSpecificObject()
+        }, 3000); // Ajuste o valor do intervalo de tempo conforme necessário (em milissegundos)
+    })();
