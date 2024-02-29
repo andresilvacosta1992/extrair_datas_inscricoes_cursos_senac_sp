@@ -6,3 +6,4 @@ var dataInscricao = document.querySelector('.ssp-container-botao-bolsa').textCon
 var valoresSeparadosPorVirgula = enderecoUnidade + '|||' + periodoCurso + '|||' + diaEHora + '|||' + dataInscricao;
 // Imprima a string no console
 console.log(valoresSeparadosPorVirgula);
+
