@@ -42,18 +42,12 @@
         // Nome do arquivo JSON
         var fileName = 'dados_' + tituloPagina + '.json';
 
-        // Criar um link de download temporário
-        var link = document.createElement('a');
-        link.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonString);
-        link.download = fileName;
-        link.style.display = 'none';
-        document.body.appendChild(link);
-
-        // Clicar no link para iniciar o download
-        link.click();
-
-        // Remover o link após o download
-        document.body.removeChild(link);
+        // Baixar o arquivo JSON
+        GM_download({
+            url: 'data:application/json;charset=utf-8,' + encodeURIComponent(jsonString),
+            name: fileName,
+            saveAs: true
+        });
     }
 
     function testePeriodo() {

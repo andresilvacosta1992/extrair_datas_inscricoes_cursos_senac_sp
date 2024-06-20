@@ -1,0 +1,58 @@
+[
+    {
+        "nome": "Beleza e Estética",
+        "url": "https://www.sp.senac.br/areas/beleza-e-estetica"
+    },
+    {
+        "nome": "Bem-estar",
+        "url": "https://www.sp.senac.br/areas/bem-estar"
+    },
+    {
+        "nome": "Comunicação e Marketing",
+        "url": "https://www.sp.senac.br/areas/comunicacao-e-marketing"
+    },
+    {
+        "nome": "Desenvolvimento Social",
+        "url": "https://www.sp.senac.br/areas/desenvolvimento-social"
+    },
+    {
+        "nome": "Design, Artes e Arquitetura",
+        "url": "https://www.sp.senac.br/areas/design-artes-e-arquitetura"
+    },
+    {
+        "nome": "Educação",
+        "url": "https://www.sp.senac.br/areas/educacao"
+    },
+    {
+        "nome": "Gastronomia e alimentação",
+        "url": "https://www.sp.senac.br/areas/gastronomia-e-alimentacao"
+    },
+    {
+        "nome": "Gestão e Negócios",
+        "url": "https://www.sp.senac.br/areas/gestao-e-negocios"
+    },
+    {
+        "nome": "Idiomas",
+        "url": "https://www.sp.senac.br/areas/idiomas"
+    },
+    {
+        "nome": "Meio Ambiente, Segurança e Saúde no Trabalho",
+        "url": "https://www.sp.senac.br/areas/meio-ambiente-seguranca-e-saude-no-trabalho"
+    },
+    {
+        "nome": "Moda",
+        "url": "https://www.sp.senac.br/areas/moda"
+    },
+    {
+        "nome": "Saúde",
+        "url": "https://www.sp.senac.br/areas/saude"
+    },
+    {
+        "nome": "Tecnologia da Informação",
+        "url": "https://www.sp.senac.br/areas/tecnologia-da-informacao"
+    },
+    {
+        "nome": "Turismo e Hospitalidade",
+        "url": "https://www.sp.senac.br/areas/turismo-e-hospitalidade"
+    }
+]
