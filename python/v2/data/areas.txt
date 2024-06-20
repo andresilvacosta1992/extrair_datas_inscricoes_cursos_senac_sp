@@ -1,14 +1,14 @@
-Beleza e Estética: https://www.sp.senac.br/areas/beleza-e-estetica
-Bem-estar: https://www.sp.senac.br/areas/bem-estar
-Comunicação e Marketing: https://www.sp.senac.br/areas/comunicacao-e-marketing
-Desenvolvimento Social: https://www.sp.senac.br/areas/desenvolvimento-social
-Design, Artes e Arquitetura: https://www.sp.senac.br/areas/design-artes-e-arquitetura
-Educação: https://www.sp.senac.br/areas/educacao
-Gastronomia e alimentação: https://www.sp.senac.br/areas/gastronomia-e-alimentacao
-Gestão e Negócios: https://www.sp.senac.br/areas/gestao-e-negocios
-Idiomas: https://www.sp.senac.br/areas/idiomas
-Meio Ambiente, Segurança e Saúde no Trabalho: https://www.sp.senac.br/areas/meio-ambiente-seguranca-e-saude-no-trabalho
-Moda: https://www.sp.senac.br/areas/moda
-Saúde: https://www.sp.senac.br/areas/saude
-Tecnologia da Informação: https://www.sp.senac.br/areas/tecnologia-da-informacao
-Turismo e Hospitalidade: https://www.sp.senac.br/areas/turismo-e-hospitalidade
+beleza-e-estetica
+bem-estar
+comunicacao-e-marketing
+desenvolvimento-social
+design-artes-e-arquitetura
+educacao
+gastronomia-e-alimentacao
+gestao-e-negocios
+idiomas
+meio-ambiente-seguranca-e-saude-no-trabalho
+moda
+saude
+tecnologia-da-informacao
+turismo-e-hospitalidade
