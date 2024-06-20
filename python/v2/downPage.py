@@ -5,8 +5,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
+from pyvirtualdisplay import Display
+
 
 def setup_driver():
+    display = Display(visible=0, size=(1920, 1080))
+    display.start()
     
     chrome_options = Options()
     #proxy_ip_port = '66.78.34.223:5842'
@@ -50,6 +54,7 @@ def downloadPagina(link, arquivo, pasta):
         print(f"Erro ao baixar a página: {e}")
     finally:
         driver.quit()
+        display.stop()
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
