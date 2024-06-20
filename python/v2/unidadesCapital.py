@@ -31,5 +31,5 @@ def extract_unidades_capital_and_save(file_path, output_path):
 if __name__ == '__main__':
     # Caminhos de entrada e saída
     file_path = 'data/menu.html'
-    output_path = 'data/unidades_capital_slugs.txt'
+    output_path = 'data/unidadesCapital.txt'
     extract_unidades_capital_and_save(file_path, output_path)
