@@ -32,7 +32,7 @@ def downloadPagina(link, arquivo, pasta):
         countdown = 5
         for i in range(countdown, 0, -1):
             print(f"Aguardando {i} segundos...")
-            time.sleep(1)  # Aguarda 1 segundo a cada iteração
+            time.sleep(1)  
 
         # Construir caminho completo para salvar o arquivo
         caminho_completo = os.path.abspath(os.path.join(os.getcwd(), 'data', pasta, f"{arquivo}.html"))
