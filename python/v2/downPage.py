@@ -9,13 +9,11 @@ from pyvirtualdisplay import Display
 
 
 def setup_driver():
-    display = Display(visible=0, size=(1920, 1080))
-    display.start()
     
     chrome_options = Options()
     #proxy_ip_port = '66.78.34.223:5842'
     #chrome_options.add_argument(f'--proxy-server={proxy_ip_port}')
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--window-size=1920x1080") 
@@ -54,7 +52,7 @@ def downloadPagina(link, arquivo, pasta):
         print(f"Erro ao baixar a página: {e}")
     finally:
         driver.quit()
-        display.stop()
+
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
