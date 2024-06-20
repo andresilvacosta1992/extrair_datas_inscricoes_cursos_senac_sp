@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import unidecode
 
 # Caminho para o arquivo HTML
 file_path = 'data/subCursosBelezaEestetica.html'
@@ -10,21 +11,21 @@ with open(file_path, 'r', encoding='utf-8') as file:
 # Analisar o HTML
 soup = BeautifulSoup(html_content, 'html.parser')
 
-# Encontrar todos as subáreas dentro da seção de navegação
+# Encontrar todas as subáreas dentro da seção de navegação
 subareas = soup.find('nav', {'id': 'nav-sub-temas'}).find_all('a', {'data-tema': True})
 
-# Criar uma lista para armazenar os slugs
+# Criar uma lista para armazenar os slugs das subáreas
 slugs = []
 
 for subarea in subareas:
-    # Verificar se o atributo 'href' existe antes de tentar acessá-lo
-    if 'href' in subarea.attrs:
-        slug = subarea['href']
-        slugs.append(slug)
+    # Extrair o título de cada subárea e transformar em slug
+    title = subarea.text.strip()
+    slug = unidecode.unidecode(title).lower().replace(' ', '-')
+    slugs.append(slug)
 
 # Salvar os slugs em um arquivo txt
-with open('slugs_cursos.txt', 'w', encoding='utf-8') as file:
+with open('data/subareas.txt', 'w', encoding='utf-8') as file:
     for slug in slugs:
         file.write(slug + '\n')
 
-print("Slugs salvos com sucesso no arquivo 'slugs_cursos.txt'")
+print("Slugs das subáreas salvos com sucesso no arquivo 'data/slugs_subareas.txt'")
