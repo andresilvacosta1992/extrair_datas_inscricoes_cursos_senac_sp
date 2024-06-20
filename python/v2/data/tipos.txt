@@ -1,0 +1,2 @@
+cursos-livres
+cursos-tecnicos
