@@ -7,10 +7,11 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 def setup_driver():
-    proxy_ip_port = '177.73.136.29:8080'
+    
     chrome_options = Options()
-    chrome_options.add_argument(f'--proxy-server={proxy_ip_port}')
-    chrome_options.add_argument("--headless")
+    #proxy_ip_port = '66.78.34.223:5842'
+    #chrome_options.add_argument(f'--proxy-server={proxy_ip_port}')
+    c#hrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
