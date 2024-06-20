@@ -11,7 +11,7 @@ def setup_driver():
     chrome_options = Options()
     #proxy_ip_port = '66.78.34.223:5842'
     #chrome_options.add_argument(f'--proxy-server={proxy_ip_port}')
-    c#hrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")
