@@ -55,10 +55,10 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     except Exception as e:
         print(f"Erro ao processar o arquivo {arquivoEntrada}: {e}")
 
-def extrairMenu():
+def extrairMenuHtml():
     extrairClass('data/cache_html/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/cache_html/menu.html')
 
-def extrairAreas(file_path='data/cache_html/menu.html', output_path='data/areas.json'):
+def extrairAreasJson(file_path='data/cache_html/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
@@ -66,8 +66,7 @@ def extrairAreas(file_path='data/cache_html/menu.html', output_path='data/areas.
     areas_link = soup.find('a', text=lambda t: t and 'Áreas' in t)
     slugs_list = []
     if areas_link and areas_link.find_next_sibling('ul'):
-        areas = areas_link.find_next_sibling('ul').find_all('a')
-        print(areas)
+        areas = areas_link.find_next_sibling('ul').find_all('a')        
         for area in areas:
             url = area['href']
             slug = url.split('/')[-1]
@@ -131,8 +130,8 @@ def subAreas3():
 
 def main():
     #downPagePrincipal()
-    #extrairMenu()
-    extrairAreas()
+    #extrairMenuHtml()
+    #extrairAreasJson()
     #download_areas()
     #subAreas3()
 
