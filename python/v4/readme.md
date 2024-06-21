@@ -6,4 +6,5 @@
 - [x] unidades
 
 
-- https://www.sp.senac.br/areas/{area}
+- [] áreas: https://www.sp.senac.br/areas/{area}
+- [] subareas: https://www.sp.senac.br/areas/{area}/{subarea}

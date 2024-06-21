@@ -1,0 +1,1 @@
+#módulo para verificar se o link é válido ou não.
