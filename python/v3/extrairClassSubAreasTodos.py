@@ -8,16 +8,17 @@ def classHeader():
         areas = json.load(file)
     
     # Diretório onde as páginas estão salvas
-    input_directory = 'pagesAreas'
+    input_directory = 'data/pagesAreas'  # Certifique-se de que este diretório está correto e contém os arquivos
     # Diretório para salvar os resultados da extração
-    output_directory = 'pages/pagesAreas2'
+    output_directory = 'data/pagesAreas2'
     os.makedirs(output_directory, exist_ok=True)  # Cria o diretório se não existir
 
     # Acessar todas as páginas para extrair a classe desejada
     for area in areas:
         input_path = os.path.join(input_directory, f"{area}.html")
+        output_path = os.path.join(output_directory, f"{area}.html")  # Caminho de saída corrigido
         if os.path.exists(input_path):
-            extrairClass(area, 'ssp-page-area__lista-cursos-items', 'data/pagesAreas')
+            extrairClass(input_path, 'ssp-page-area__lista-cursos-items', output_path)
         else:
             print(f"Arquivo não encontrado: {input_path}")
 
