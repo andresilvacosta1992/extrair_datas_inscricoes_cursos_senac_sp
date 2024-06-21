@@ -106,9 +106,13 @@ def download_areas():
     for area in areas:
         downloadPagina(f"https://www.sp.senac.br/areas/{area}", area, 'subAreas/subAreas1')
         print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
+        extrairClass(f'data/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/subAreas/subAreas2/{area}.html')
+        print(f"foi extraído o html da class 'nav-btn-filter' do arquivo f'data/subAreas/subAreas1/{area}.html' salvo no f'data/subAreas/subAreas2/{area}.html")
+
+
 
 if __name__ == "__main__":
-    downPagePrincipal()
-    menu()
-    areas()
-    download_areas()
+    #downPagePrincipal()
+    #menu()
+    #areas()
+    #download_areas()
