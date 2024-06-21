@@ -24,9 +24,9 @@ def extract_slugs_and_save(file_path, output_path):
             slug = url.split('/')[-1]  # Pega a última parte do URL
             slugs_list.append(slug)
 
-    # Salvar os slugs em um arquivo JSON
+    # Salvar os slugs em um arquivo JSON formatado
     with open(output_path, 'w', encoding='utf-8') as output_file:
-        json.dump(slugs_list, output_file)
+        json.dump(slugs_list, output_file, indent=4)  # Adicionando indentação para melhor legibilidade
     print(f"Slugs salvos em: {output_path}")
 
 if __name__ == '__main__':
