@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import os
+import json  # Importando a biblioteca json
 
 def extract_slugs_and_save(file_path, output_path):
     # Garantir que o diretório de saída existe
@@ -9,7 +10,7 @@ def extract_slugs_and_save(file_path, output_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
 
-    # Use Beautiful Soup para analisar o HTML
+    # Usar Beautiful Soup para analisar o HTML
     soup = BeautifulSoup(html_content, 'lxml')
 
     # Encontrar a seção de áreas
@@ -21,15 +22,15 @@ def extract_slugs_and_save(file_path, output_path):
             url = area['href']
             # Extrair o slug do URL
             slug = url.split('/')[-1]  # Pega a última parte do URL
-            slugs_list.append(f"{slug}\n")
+            slugs_list.append(slug)
 
-    # Salvar os slugs em um arquivo de texto
+    # Salvar os slugs em um arquivo JSON
     with open(output_path, 'w', encoding='utf-8') as output_file:
-        output_file.writelines(slugs_list)
+        json.dump(slugs_list, output_file)
     print(f"Slugs salvos em: {output_path}")
 
 if __name__ == '__main__':
     # Caminhos de entrada e saída
     file_path = 'data/menu.html'
-    output_path = 'data/areas.txt'
+    output_path = 'data/areas.json'  # Alterando a extensão para .json
     extract_slugs_and_save(file_path, output_path)
