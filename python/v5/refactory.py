@@ -77,3 +77,38 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
 def menu():
     extrairClass('data/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/menu.html')
 
+from bs4 import BeautifulSoup
+import os
+import json 
+
+def areas(file_path='data/menu.html', output_path='data/areas.json'):
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    with open(file_path, 'r', encoding='utf-8') as file:
+        html_content = file.read()
+    soup = BeautifulSoup(html_content, 'lxml')
+    areas_link = soup.find('a', text=lambda t: t and 'Áreas' in t)
+    slugs_list = []
+    if areas_link and areas_link.find_next_sibling('ul'):
+        areas = areas_link.find_next_sibling('ul').find_all('a')
+        for area in areas:
+            url = area['href']
+            slug = url.split('/')[-1]
+            slugs_list.append(slug)
+    with open(output_path, 'w', encoding='utf-8') as output_file:
+        json.dump(slugs_list, output_file, indent=4) 
+    print(f"Slugs salvos em: {output_path}")
+
+
+def download_areas():
+    with open('data/areas.json', 'r', encoding='utf-8') as file:
+        areas = json.load(file)
+    
+    for area in areas:
+        downloadPagina(f"https://www.sp.senac.br/areas/{area}", area, 'subAreas/subAreas1')
+        print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
+
+if __name__ == "__main__":
+    downPagePrincipal()
+    menu()
+    areas()
+    download_areas()
