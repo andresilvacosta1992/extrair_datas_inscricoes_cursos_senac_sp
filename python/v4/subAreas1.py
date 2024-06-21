@@ -10,8 +10,8 @@ def download_areas():
         areas = json.load(file)
     
     # Diretório para salvar os downloads das páginas
-    save_directory = 'pagesAreas'
-    os.makedirs(save_directory, exist_ok=True)  # Cria o diretório se ele não existir
+    save_directory = 'subAreas/subAreas1'
+
     
     # Fazer download de cada página de área e salvar o conteúdo
     for area in areas:
