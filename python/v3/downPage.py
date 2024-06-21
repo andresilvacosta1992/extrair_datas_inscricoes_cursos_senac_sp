@@ -35,7 +35,7 @@ def downloadPagina(link, arquivo, pasta):
         driver.get(url)
 
         # Contagem regressiva antes de capturar a página
-        countdown = 5
+        countdown = 2
         for i in range(countdown, 0, -1):
             print(f"Aguardando {i} segundos...")
             time.sleep(1)  
