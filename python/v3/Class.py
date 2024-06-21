@@ -6,14 +6,9 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     # Garantir que o diretório onde o arquivo de saída será criado exista
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
 
-    
-
     try:
-        # Abrir o arquivo HTML para leitura
-        print(arquivoEntrada)
         with open(arquivoEntrada, 'r', encoding='utf-8') as arquivo:
             conteudo = arquivo.read()
-            print(conteudo)
 
         # Parsear o conteúdo HTML com BeautifulSoup
         soup = BeautifulSoup(conteudo, 'html.parser')
