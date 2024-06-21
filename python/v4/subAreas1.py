@@ -6,9 +6,7 @@ def download_areas():
         areas = json.load(file)
     
     for area in areas:
-        url = f"https://www.sp.senac.br/areas/{area}"
-        file_name = area
-        downloadPagina(url, file_name, 'subAreas/subAreas1')
+        downloadPagina(f"https://www.sp.senac.br/areas/{area}", area, 'subAreas/subAreas1')
         print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
 
 if __name__ == "__main__":
