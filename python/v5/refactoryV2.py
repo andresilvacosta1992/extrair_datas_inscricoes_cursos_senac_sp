@@ -6,22 +6,33 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import unidecode
 import shutil
+import logging
+
+# Configuração do logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def setup_driver():
     options = Options()
     options.add_argument("--headless")
     options.add_argument("--disable-gpu")
+    logging.info("Configurando o WebDriver.")
     return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 def load_json_file(filepath):
-    with open(filepath, 'r', encoding='utf-8') as file:
-        return json.load(file)
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            data = json.load(file)
+        logging.info(f"Arquivo JSON carregado com sucesso: {filepath}")
+        return data
+    except FileNotFoundError:
+        logging.error(f"Arquivo não encontrado: {filepath}")
+        return {}
 
 def save_json_file(data, filepath):
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, 'w', encoding='utf-8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
-    print(f"Data saved to {filepath}")
+    logging.info(f"Data saved to {filepath}")
 
 def download_page(url, output_path):
     driver = setup_driver()
@@ -30,14 +41,23 @@ def download_page(url, output_path):
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         with open(output_path, 'w', encoding='utf-8') as file:
             file.write(driver.page_source)
-        print(f"Page downloaded to {output_path}")
+        logging.info(f"Page downloaded to {output_path}")
+    except Exception as e:
+        logging.error(f"Error downloading page {url}: {e}")
     finally:
         driver.quit()
 
 def extract_elements(filepath, class_name):
-    with open(filepath, 'r', encoding='utf-8') as file:
-        soup = BeautifulSoup(file.read(), 'html.parser')
-    return [unidecode.unidecode(elem.text).lower().replace(' ', '-') for elem in soup.find_all(class_=class_name)]
+    try:
+        with open(filepath, 'r', encoding='utf-8') as file:
+            content = file.read()
+        soup = BeautifulSoup(content, 'html.parser')
+        elements = [unidecode.unidecode(elem.text).lower().replace(' ', '-') for elem in soup.find_all(class_=class_name)]
+        logging.info(f"Elements extracted from {filepath}")
+        return elements
+    except Exception as e:
+        logging.error(f"Error processing file {filepath}: {e}")
+        return []
 
 # Example usage
 if __name__ == "__main__":
