@@ -1,7 +1,8 @@
 import json
-import requests
+import os
 from bs4 import BeautifulSoup
 import unidecode
+from downPage import downloadPagina
 
 def extract_subareas(html_content):
     # Analisar o HTML
@@ -22,20 +23,31 @@ def subAreas2():
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
     
-    # Para cada slug de área, acessar a URL e extrair subáreas
+    # Diretório para salvar os downloads
+    save_directory = 'cache/areas'
+    # Certifique-se de que o diretório para salvar os downloads existe
+    os.makedirs(save_directory, exist_ok=True)
+    
+    # Para cada slug de área, fazer o download da página e extrair subáreas
     for area in areas:
         url = f"https://www.sp.senac.br/areas/{area}"
+        file_name = {area}
+        output_path = os.path.join(save_directory, file_name)
+        downloadPagina(url, file_name, save_directory)
         
-        # Fazer a requisição para a URL
-        response = requests.get(url)
-        if response.status_code == 200:
-            html_content = response.text
-            # Extrair subáreas
-            slugs = extract_subareas(html_content)
-            # Imprimir os slugs para cada área
-            print(f"Slugs das subáreas para '{area}': {slugs}")
-        else:
-            print(f"Erro ao acessar {url}: Status {response.status_code}")
+        # Carregar o conteúdo HTML do arquivo baixado
+        with open(output_path, 'r', encoding='utf-8') as file:
+            html_content = file.read()
+        
+        # Extrair subáreas
+        slugs = extract_subareas(html_content)
+        
+        # Salvar os slugs em um arquivo txt para cada área
+        slug_save_path = os.path.join(save_directory, f"{area}_subareas.txt")
+        with open(slug_save_path, 'w', encoding='utf-8') as file:
+            for slug in slugs:
+                file.write(slug + '\n')
+        print(f"Slugs das subáreas salvos com sucesso no arquivo '{slug_save_path}'")
 
 if __name__ == "__main__":
     subAreas2()
