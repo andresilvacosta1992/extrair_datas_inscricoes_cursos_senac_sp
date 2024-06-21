@@ -18,7 +18,7 @@ def linksSubAreas1():
     os.makedirs('data', exist_ok=True)
 
     # Salvar os links em um arquivo JSON
-    with open('data/linksSubAreas.json', 'w', encoding='utf-8') as file:
+    with open('data/linksSubAreas/linksSubAreas1.json', 'w', encoding='utf-8') as file:
         json.dump(links_subareas, file, ensure_ascii=False, indent=4)
 
     print("Links das subáreas foram salvos em 'data/linksSubAreas.json'")
