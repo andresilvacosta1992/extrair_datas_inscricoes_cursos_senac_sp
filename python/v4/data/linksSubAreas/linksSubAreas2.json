@@ -1,0 +1,102 @@
+{
+    "beleza-e-estetica": [
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/cabelo-e-barbearia",
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/depilacao",
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/estetica",
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/maquiagem",
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/massoterapia-e-terapias-complementares",
+        "https://www.sp.senac.br/cursos-tecnicos/beleza-e-estetica/pes-e-maos"
+    ],
+    "bem-estar": [
+        "https://www.sp.senac.br/cursos-tecnicos/bem-estar/estetica",
+        "https://www.sp.senac.br/cursos-tecnicos/bem-estar/massoterapia-e-terapias-complementares",
+        "https://www.sp.senac.br/cursos-tecnicos/bem-estar/podologia"
+    ],
+    "comunicacao-e-marketing": [
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/comunicacao-social",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/fotografia",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/marketing",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/radialismo",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/vendas",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/visual-merchandising",
+        "https://www.sp.senac.br/cursos-tecnicos/comunicacao-e-marketing/audio-e-video"
+    ],
+    "desenvolvimento-social": [],
+    "design-artes-e-arquitetura": [
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/arquitetura-e-design-de-interiores",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/arte-e-cultura",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/desenho-e-animacao",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/design-grafico-e-digital",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/fotografia",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/paisagismo-e-jardinagem",
+        "https://www.sp.senac.br/cursos-tecnicos/design-artes-e-arquitetura/visual-merchandising"
+    ],
+    "educacao": [],
+    "gastronomia-e-alimentacao": [
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/bebidas-e-servico",
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/confeitaria",
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/cozinha",
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/gestao-de-bares-e-restaurantes",
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/nutricao",
+        "https://www.sp.senac.br/cursos-tecnicos/gastronomia-e-alimentacao/panificacao"
+    ],
+    "gestao-e-negocios": [
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/administracao",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/atendimento-ao-cliente",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/comercio-exterior",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/condominio,-limpeza-e-zeladoria",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/contabil-e-fiscal",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/financas",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/gestao-de-pessoas-e-lideranca",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/logistica",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/secretariado",
+        "https://www.sp.senac.br/cursos-tecnicos/gestao-e-negocios/vendas"
+    ],
+    "idiomas": [
+        "https://www.sp.senac.br/cursos-tecnicos/idiomas/espanhol",
+        "https://www.sp.senac.br/cursos-tecnicos/idiomas/frances",
+        "https://www.sp.senac.br/cursos-tecnicos/idiomas/ingles",
+        "https://www.sp.senac.br/cursos-tecnicos/idiomas/libras"
+    ],
+    "meio-ambiente-seguranca-e-saude-no-trabalho": [
+        "https://www.sp.senac.br/cursos-tecnicos/meio-ambiente-seguranca-e-saude-no-trabalho/meio-ambiente",
+        "https://www.sp.senac.br/cursos-tecnicos/meio-ambiente-seguranca-e-saude-no-trabalho/seguranca-do-trabalho"
+    ],
+    "moda": [
+        "https://www.sp.senac.br/cursos-tecnicos/moda/costura-e-modelagem",
+        "https://www.sp.senac.br/cursos-tecnicos/moda/criacao-e-producao",
+        "https://www.sp.senac.br/cursos-tecnicos/moda/negocios-de-moda"
+    ],
+    "saude": [
+        "https://www.sp.senac.br/cursos-tecnicos/saude/educacao-fisica",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/enfermagem",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/farmacia",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/gestao-em-saude",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/hemoterapia-e-analises-clinicas",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/massoterapia-e-terapias-complementares",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/nutricao",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/odontologia",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/psicologia",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/radiologia",
+        "https://www.sp.senac.br/cursos-tecnicos/saude/optica"
+    ],
+    "tecnologia-da-informacao": [
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/banco-de-dados",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/certificacao",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/computacao-grafica",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/criacao-para-web",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/games",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/gestao-em-ti",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/informatica-para-o-trabalho",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/manutencao-e-montagem",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/programacao-e-desenvolvimento",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/redes-e-infraestrutura",
+        "https://www.sp.senac.br/cursos-tecnicos/tecnologia-da-informacao/seguranca-da-informacao"
+    ],
+    "turismo-e-hospitalidade": [
+        "https://www.sp.senac.br/cursos-tecnicos/turismo-e-hospitalidade/eventos",
+        "https://www.sp.senac.br/cursos-tecnicos/turismo-e-hospitalidade/hotelaria",
+        "https://www.sp.senac.br/cursos-tecnicos/turismo-e-hospitalidade/lazer-e-recreacao",
+        "https://www.sp.senac.br/cursos-tecnicos/turismo-e-hospitalidade/turismo"
+    ]
+}
