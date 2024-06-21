@@ -23,27 +23,22 @@ def setup_driver():
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
-def downloadPagina(link, arquivo, pasta):
+def downloadPagina(link, output_path):
     driver = setup_driver()
     try:
-        url = link
-        driver.get(url)
-        countdown = 2
-        for i in range(countdown, 0, -1):
-            print(f"Aguardando {i} segundos...")
-            time.sleep(1)  
-        caminho_completo = os.path.abspath(os.path.join(os.getcwd(), 'data', pasta, arquivo))
-        os.makedirs(os.path.dirname(caminho_completo), exist_ok=True)
-        with open(caminho_completo, "w", encoding="utf-8") as file:
+        driver.get(link)
+        time.sleep(2) 
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as file:
             file.write(driver.page_source)
-        print(f"download concluído")
+        print(f"Download concluído: {output_path}")
     except Exception as e:
         print(f"Erro ao baixar a página: {e}")
     finally:
         driver.quit()
 
 def downPagePrincipal():
-    downloadPagina("https://www.sp.senac.br/", "paginaPrincipal.html", 'data/cache_html')
+    downloadPagina("https://www.sp.senac.br/", "data/cache_html/paginaPrincipal.html")
 
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
@@ -61,8 +56,8 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
         print(f"Erro ao processar o arquivo {arquivoEntrada}: {e}")
 
 
-def menu():
-    extrairClass('data/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/menu.html')
+def extrairMenu():
+    extrairClass('data/cache_html/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/cache_html/menu.html')
 
 def areas(file_path='data/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -81,7 +76,6 @@ def areas(file_path='data/menu.html', output_path='data/areas.json'):
         json.dump(slugs_list, output_file, indent=4) 
     print(f"Slugs salvos em: {output_path}")
 
-
 def download_areas():
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
@@ -91,7 +85,6 @@ def download_areas():
         print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
         extrairClass(f'data/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/subAreas/subAreas2/{area}.html')
         print(f"foi extraído o html da class 'nav-btn-filter' do arquivo f'data/subAreas/subAreas1/{area}.html' salvo no f'data/subAreas/subAreas2/{area}.html")
-
 
 def slugify(text):
     text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
@@ -137,8 +130,8 @@ def subAreas3():
 
 
 def main():
-    downPagePrincipal()
-    #menu()
+    #downPagePrincipal()
+    extrairMenu()
     #areas()
     #download_areas()
     #subAreas3()
