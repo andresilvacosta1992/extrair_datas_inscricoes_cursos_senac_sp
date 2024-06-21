@@ -78,12 +78,11 @@ def extrairAreasJson(file_path='data/cache_html/menu.html', output_path='data/ar
 def download_areas():
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
-    
     for area in areas:
-        downloadPagina(f"https://www.sp.senac.br/areas/{area}", area, 'subAreas/subAreas1')
-        print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
-        extrairClass(f'data/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/subAreas/subAreas2/{area}.html')
-        print(f"foi extraído o html da class 'nav-btn-filter' do arquivo f'data/subAreas/subAreas1/{area}.html' salvo no f'data/subAreas/subAreas2/{area}.html")
+        downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/subAreas1/{area}.html')
+        print(f"Download da página '{area}' concluído")
+        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cacheHtml/subAreas/subAreas2/{area}.html')
+        print(f"foi extraído o html da class 'nav-btn-filter' do arquivo {area}.html")
 
 def slugify(text):
     text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
@@ -132,7 +131,7 @@ def main():
     #downPagePrincipal()
     #extrairMenuHtml()
     #extrairAreasJson()
-    #download_areas()
+    download_areas()
     #subAreas3()
 
 
