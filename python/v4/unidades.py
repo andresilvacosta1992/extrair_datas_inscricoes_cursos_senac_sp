@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import os
 import json
 
-def extract_and_save(file_path, output_path):
+def unidades(file_path='data/menu.html', output_path='data/unidades.json'):
     # Garantir que o diretório de saída existe
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     
@@ -33,4 +33,4 @@ def extract_and_save(file_path, output_path):
 if __name__ == '__main__':
     file_path = 'data/menu.html'
     output_path = 'data/unidades.json'
-    extract_and_save(file_path, output_path)
+    unidades(file_path, output_path)
