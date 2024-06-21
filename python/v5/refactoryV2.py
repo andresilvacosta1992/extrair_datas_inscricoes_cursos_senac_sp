@@ -120,9 +120,13 @@ def extrairSubAreasJson():
 def main():
     #downPagePrincipal()
     #extrairMenuHtml()
+    #extrairUnidadesJson
     #extrairAreasJson()
     download_areas()
     #extrairSubAreasJson
+    #extrairLinksUnidadesJson
+    #extrairLinksAreasPricipaisJson;
+    #extrairLinksAreasSubJson;
 
 if __name__ == "__main__":
     main()
