@@ -32,7 +32,7 @@ def downloadPagina(link, arquivo, pasta):
         for i in range(countdown, 0, -1):
             print(f"Aguardando {i} segundos...")
             time.sleep(1)  
-        caminho_completo = os.path.abspath(os.path.join(os.getcwd(), 'data', pasta, f"{arquivo}.html"))
+        caminho_completo = os.path.abspath(os.path.join(os.getcwd(), 'data', pasta, arquivo))
         os.makedirs(os.path.dirname(caminho_completo), exist_ok=True)
         with open(caminho_completo, "w", encoding="utf-8") as file:
             file.write(driver.page_source)
@@ -43,7 +43,7 @@ def downloadPagina(link, arquivo, pasta):
         driver.quit()
 
 def downPagePrincipal():
-    downloadPagina("https://www.sp.senac.br/", "paginaPrincipal", 'data/cache_html')
+    downloadPagina("https://www.sp.senac.br/", "paginaPrincipal.html", 'data/cache_html')
 
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
@@ -138,10 +138,10 @@ def subAreas3():
 
 def main():
     downPagePrincipal()
-    menu()
-    areas()
-    download_areas()
-    subAreas3()
+    #menu()
+    #areas()
+    #download_areas()
+    #subAreas3()
 
 
 if __name__ == "__main__":
