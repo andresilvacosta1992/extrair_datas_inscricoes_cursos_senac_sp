@@ -1,11 +1,11 @@
 import json
 from Class import extrairClass
 
-def classHeader():
+def subAreas2():
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file) 
     for area in areas:
-        extrairClass(f'data/pagesAreas/{area}.html', 'ssp-page-area__lista-cursos-items', f'data/pagesAreasV2/{area}.html')
+        extrairClass(f'data/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/subAreas/subAreas2/{area}.html')
 
 if __name__ == "__main__":
-    classHeader()
+    subAreas2()
