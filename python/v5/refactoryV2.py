@@ -75,13 +75,14 @@ def extrairAreasJson(file_path='data/cache_html/menu.html', output_path='data/ar
         json.dump(slugs_list, output_file, indent=4) 
     print(f"Slugs salvos em: {output_path}")
 
-def download_areas():
-    with open('data/areas.json', 'r', encoding='utf-8') as file:
+with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
+
+def download_areas():
     for area in areas:
         downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/subAreas1/{area}.html')
         print(f"Download da página '{area}' concluído")
-        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cacheHtml/subAreas/subAreas2/{area}.html')
+        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cache_Html/subAreas/subAreas2/{area}.html')
         print(f"foi extraído o html da class 'nav-btn-filter' do arquivo {area}.html")
 
 def slugify(text):
