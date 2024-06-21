@@ -20,7 +20,6 @@ def setup_driver():
     chrome_options.add_argument("accept-language=en-US,en;q=0.9")
     chrome_options.add_argument("accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
     chrome_options.add_argument("referer=https://www.google.com/")
-
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
@@ -44,11 +43,7 @@ def downloadPagina(link, arquivo, pasta):
         driver.quit()
 
 def downPagePrincipal():
-    link = "https://www.sp.senac.br/"
-    arquivo = "paginaPrincipal"
-    pasta = ""
-    print(f"fazendo download da página principal '{link}'")
-    downloadPagina(link, arquivo, pasta)
+    downloadPagina("https://www.sp.senac.br/", "paginaPrincipal", 'data/cache_html')
 
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
@@ -140,9 +135,14 @@ def subAreas3():
     shutil.copy(output_path, destination_path)
     print(f"Cópia do arquivo JSON salva em: {destination_path}")
 
-if __name__ == "__main__":
+
+def main():
     downPagePrincipal()
     menu()
     areas()
     download_areas()
     subAreas3()
+
+
+if __name__ == "__main__":
+    main()
