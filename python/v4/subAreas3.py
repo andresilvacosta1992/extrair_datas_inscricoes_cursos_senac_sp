@@ -2,6 +2,7 @@ import os
 import json
 from bs4 import BeautifulSoup
 import unidecode
+import shutil  # Importar shutil para copiar arquivos
 
 def slugify(text):
     # Transforma texto em slug: minúsculas, sem acentos, espaços por hifens
@@ -44,6 +45,11 @@ def subAreas3():
     with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(area_subareas, file, ensure_ascii=False, indent=4)
     print(f"Subáreas extraídas e salvas em JSON em: {output_path}")
+
+    # Copiar o arquivo JSON para a pasta data/
+    destination_path = 'data/subareas.json'
+    shutil.copy(output_path, destination_path)
+    print(f"Cópia do arquivo JSON salva em: {destination_path}")
 
 if __name__ == "__main__":
     subAreas3()
