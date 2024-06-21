@@ -18,7 +18,7 @@ def classHeader():
         input_path = os.path.join(input_directory, f"{area}.html")
         output_path = os.path.join(output_directory, f"{area}.html")  # Caminho de saída corrigido
         if os.path.exists(input_path):
-            extrairClass(input_path, 'ssp-page-area__lista-cursos-items', output_path)
+            extrairClass(f'pagesAreas/{area}', 'ssp-page-area__lista-cursos-items', output_path)
         else:
             print(f"Arquivo não encontrado: {input_path}")
 
