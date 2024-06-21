@@ -80,9 +80,9 @@ with open('data/areas.json', 'r', encoding='utf-8') as file:
 
 def download_areas():
     for area in areas:
-        downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/subAreas1/{area}.html')
+        downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/paginas_principais/{area}.html')
         print(f"Download da página '{area}' concluído")
-        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cache_html/subAreas/subAreas2/{area}.html')
+        extrairClass(f'data/cache_html/subAreas/paginas_principais/{area}.html', 'nav-btn-filter', f'data/cache_html/subAreas/extracao_codigo_areas/{area}.html')
         print(f"foi extraído o html da class 'nav-btn-filter' do arquivo {area}.html")
 
 def slugify(text):
