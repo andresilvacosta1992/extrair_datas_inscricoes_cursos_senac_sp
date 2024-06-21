@@ -50,7 +50,6 @@ def downPagePrincipal():
     print(f"fazendo download da página principal '{link}'")
     downloadPagina(link, arquivo, pasta)
 
-
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
     try:
@@ -69,8 +68,6 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
 
 def menu():
     extrairClass('data/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/menu.html')
-
-
 
 def areas(file_path='data/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
@@ -102,19 +99,14 @@ def download_areas():
 
 
 def slugify(text):
-    # Transforma texto em slug: minúsculas, sem acentos, espaços por hifens
     text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
-    text = text.replace(' ', '-')  # Substituir espaços por hifens
+    text = text.replace(' ', '-')
     return text
 
 def subAreas3():
-    # Carregar as áreas do arquivo JSON
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
-
-    # Dicionário para armazenar as subáreas por área
     area_subareas = {}
-
     for area in areas:
         input_path = f"data/subAreas/subAreas2/{area}.html"
         os.makedirs('data/subAreas/subAreas3', exist_ok=True)
@@ -149,7 +141,8 @@ def subAreas3():
     print(f"Cópia do arquivo JSON salva em: {destination_path}")
 
 if __name__ == "__main__":
-    #downPagePrincipal()
-    #menu()
-    #areas()
+    downPagePrincipal()
+    menu()
+    areas()
     download_areas()
+    subAreas3()
