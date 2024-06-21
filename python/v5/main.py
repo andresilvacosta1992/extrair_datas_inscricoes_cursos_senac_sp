@@ -3,7 +3,7 @@ from menu import menu
 from unidades import unidades
 from areas import areas
 
-#downPagePrincipal()
-#menu()
-#unidades()
+downPagePrincipal()
+menu()
+unidades()
 areas()
