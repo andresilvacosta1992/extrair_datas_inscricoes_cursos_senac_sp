@@ -82,17 +82,15 @@ def download_areas():
     for area in areas:
         downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/subAreas1/{area}.html')
         print(f"Download da página '{area}' concluído")
-        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cache_Html/subAreas/subAreas2/{area}.html')
+        extrairClass(f'data/cache_html/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/cache_html/subAreas/subAreas2/{area}.html')
         print(f"foi extraído o html da class 'nav-btn-filter' do arquivo {area}.html")
 
 def slugify(text):
-    text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
+    text = unidecode.unidecode(text).lower()
     text = text.replace(' ', '-')
     return text
 
-def subAreas3():
-    with open('data/areas.json', 'r', encoding='utf-8') as file:
-        areas = json.load(file)
+def extrairSubAreasJson():
     area_subareas = {}
     for area in areas:
         input_path = f"data/subAreas/subAreas2/{area}.html"
@@ -101,22 +99,13 @@ def subAreas3():
         try:
             with open(input_path, 'r', encoding='utf-8') as file:
                 conteudo = file.read()
-
-            # Parsear o conteúdo HTML com BeautifulSoup
             soup = BeautifulSoup(conteudo, 'html.parser')
-
-            # Encontrar todos os elementos <a> com o atributo data-tema
             subareas = soup.find('nav', id='nav-sub-temas').find_all('a', attrs={"data-tema": True})
-
-            # Adicionar subáreas ao dicionário usando a área como chave
-            area_subareas[area] = [slugify(subarea.text) for subarea in subareas]
-        
+            area_subareas[area] = [slugify(subarea.text) for subarea in subareas]        
         except FileNotFoundError:
             print(f"Erro: O arquivo {input_path} não foi encontrado.")
         except Exception as e:
             print(f"Erro ao processar o arquivo {input_path}: {e}")
-
-    # Salvar o dicionário de subáreas em um arquivo JSON
     output_path = 'data/subAreas/subAreas3/subareas.json'
     with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(area_subareas, file, ensure_ascii=False, indent=4)
@@ -133,8 +122,7 @@ def main():
     #extrairMenuHtml()
     #extrairAreasJson()
     download_areas()
-    #subAreas3()
-
+    #extrairSubAreasJson
 
 if __name__ == "__main__":
     main()
