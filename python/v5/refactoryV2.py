@@ -55,11 +55,10 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     except Exception as e:
         print(f"Erro ao processar o arquivo {arquivoEntrada}: {e}")
 
-
 def extrairMenu():
     extrairClass('data/cache_html/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/cache_html/menu.html')
 
-def areas(file_path='data/menu.html', output_path='data/areas.json'):
+def extrairAreas(file_path='data/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
@@ -131,8 +130,8 @@ def subAreas3():
 
 def main():
     #downPagePrincipal()
-    extrairMenu()
-    #areas()
+    #extrairMenu()
+    extrairAreas()
     #download_areas()
     #subAreas3()
 
