@@ -1,3 +1,5 @@
+#download de todos as páginas de áreas
+
 import json
 import os
 from downPage import downloadPagina
