@@ -93,9 +93,8 @@ def slugify(text):
 def extrairSubAreasJson():
     area_subareas = {}
     for area in areas:
-        input_path = f"data/subAreas/subAreas2/{area}.html"
-        os.makedirs('data/subAreas/subAreas3', exist_ok=True)
-
+        input_path = f"data/cache_html/subAreas/extracao_codigo_areas/{area}.html"
+        os.makedirs('data', exist_ok=True)
         try:
             with open(input_path, 'r', encoding='utf-8') as file:
                 conteudo = file.read()
@@ -106,15 +105,11 @@ def extrairSubAreasJson():
             print(f"Erro: O arquivo {input_path} não foi encontrado.")
         except Exception as e:
             print(f"Erro ao processar o arquivo {input_path}: {e}")
-    output_path = 'data/subAreas/subAreas3/subareas.json'
+    output_path = 'data/subareas.json'
     with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(area_subareas, file, ensure_ascii=False, indent=4)
     print(f"Subáreas extraídas e salvas em JSON em: {output_path}")
 
-    # Copiar o arquivo JSON para a pasta data/
-    destination_path = 'data/subareas.json'
-    shutil.copy(output_path, destination_path)
-    print(f"Cópia do arquivo JSON salva em: {destination_path}")
 
 
 def main():
@@ -122,8 +117,8 @@ def main():
     #extrairMenuHtml()
     #extrairUnidadesJson
     #extrairAreasJson()
-    download_areas()
-    #extrairSubAreasJson
+    #download_areas()
+    extrairSubAreasJson()
     #extrairLinksUnidadesJson
     #extrairLinksAreasPricipaisJson;
     #extrairLinksAreasSubJson;
