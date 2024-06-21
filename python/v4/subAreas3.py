@@ -2,21 +2,19 @@ import os
 import json
 from bs4 import BeautifulSoup
 
-def extrair_subareas():
-    # Carregar os nomes das áreas do arquivo JSON
+def subAreas3():
+    # Carregar as áreas do arquivo JSON
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
 
-    # Processar cada área
+    # Dicionário para armazenar as subáreas por área
+    area_subareas = {}
+
     for area in areas:
         input_path = f"data/subAreas/subAreas2/{area}.html"
-        output_path = f"data/subAreas/subAreas3/{area}.txt"
-
-        # Garante que o diretório de saída existe
-        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        os.makedirs('data/subAreas/subAreas3', exist_ok=True)
 
         try:
-            # Abrir o arquivo HTML para leitura
             with open(input_path, 'r', encoding='utf-8') as file:
                 conteudo = file.read()
 
@@ -26,17 +24,19 @@ def extrair_subareas():
             # Encontrar todos os elementos <a> com o atributo data-tema
             subareas = soup.find('nav', id='nav-sub-temas').find_all('a', attrs={"data-tema": True})
 
-            # Abrir o arquivo de saída para escrita
-            with open(output_path, 'w', encoding='utf-8') as file:
-                # Escrever o nome de cada subárea no arquivo de saída
-                for subarea in subareas:
-                    file.write(subarea.text + '\n')
-            print(f"Subáreas extraídas e salvas em: {output_path}")
-
+            # Adicionar subáreas ao dicionário usando a área como chave
+            area_subareas[area] = [subarea.text for subarea in subareas]
+        
         except FileNotFoundError:
             print(f"Erro: O arquivo {input_path} não foi encontrado.")
         except Exception as e:
             print(f"Erro ao processar o arquivo {input_path}: {e}")
 
+    # Salvar o dicionário de subáreas em um arquivo JSON
+    output_path = 'data/subAreas/subAreas3/subareas.json'
+    with open(output_path, 'w', encoding='utf-8') as file:
+        json.dump(area_subareas, file, ensure_ascii=False, indent=4)
+    print(f"Subáreas extraídas e salvas em JSON em: {output_path}")
+
 if __name__ == "__main__":
-    extrair_subareas()
+    subAreas3()

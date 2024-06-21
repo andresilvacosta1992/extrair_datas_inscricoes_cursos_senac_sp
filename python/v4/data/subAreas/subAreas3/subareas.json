@@ -1,0 +1,102 @@
+{
+    "beleza-e-estetica": [
+        "Cabelo e Barbearia",
+        "Depilação",
+        "Estética",
+        "Maquiagem",
+        "Massoterapia e Terapias Complementares",
+        "Pés e Mãos"
+    ],
+    "bem-estar": [
+        "Estética",
+        "Massoterapia e Terapias Complementares",
+        "Podologia"
+    ],
+    "comunicacao-e-marketing": [
+        "Comunicação Social",
+        "Fotografia",
+        "Marketing",
+        "Radialismo",
+        "Vendas",
+        "Visual Merchandising",
+        "Áudio e Vídeo"
+    ],
+    "desenvolvimento-social": [],
+    "design-artes-e-arquitetura": [
+        "Arquitetura e Design de Interiores",
+        "Arte e Cultura",
+        "Desenho e Animação",
+        "Design Gráfico e Digital",
+        "Fotografia",
+        "Paisagismo e Jardinagem",
+        "Visual Merchandising"
+    ],
+    "educacao": [],
+    "gastronomia-e-alimentacao": [
+        "Bebidas e Serviço",
+        "Confeitaria",
+        "Cozinha",
+        "Gestão de Bares e Restaurantes",
+        "Nutrição",
+        "Panificação"
+    ],
+    "gestao-e-negocios": [
+        "Administração",
+        "Atendimento ao Cliente",
+        "Comércio Exterior",
+        "Condomínio, Limpeza e Zeladoria",
+        "Contábil e Fiscal",
+        "Finanças",
+        "Gestão de Pessoas e Liderança",
+        "Logística",
+        "Secretariado",
+        "Vendas"
+    ],
+    "idiomas": [
+        "Espanhol",
+        "Francês",
+        "Inglês",
+        "Libras"
+    ],
+    "meio-ambiente-seguranca-e-saude-no-trabalho": [
+        "Meio Ambiente",
+        "Segurança do Trabalho"
+    ],
+    "moda": [
+        "Costura e Modelagem",
+        "Criação e Produção",
+        "Negócios de Moda"
+    ],
+    "saude": [
+        "Educação Física",
+        "Enfermagem",
+        "Farmácia",
+        "Gestão em Saúde",
+        "Hemoterapia e Análises Clínicas",
+        "Massoterapia e Terapias Complementares",
+        "Nutrição",
+        "Odontologia",
+        "Psicologia",
+        "Radiologia",
+        "Óptica"
+    ],
+    "tecnologia-da-informacao": [
+        "Banco de Dados",
+        "Certificação",
+        "Computação Gráfica",
+        "Criação para Web",
+        "Games",
+        "Gestão em TI",
+        "Informática para o Trabalho",
+        "Manutenção e Montagem",
+        "Programação e Desenvolvimento",
+        "Redes e Infraestrutura",
+        "Segurança da Informação"
+    ],
+    "turismo-e-hospitalidade": [
+        "Eventos",
+        "Hotelaria",
+        "Lazer e Recreação",
+        "Turismo"
+    ]
+}
