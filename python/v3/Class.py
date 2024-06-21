@@ -3,6 +3,9 @@ from bs4 import BeautifulSoup
 import os
 
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
+    # Garantir que o diretório onde o arquivo de saída será criado exista
+    os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
+
     
 
     try:
