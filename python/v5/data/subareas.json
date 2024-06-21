@@ -1,0 +1,102 @@
+{
+    "beleza-e-estetica": [
+        "cabelo-e-barbearia",
+        "depilacao",
+        "estetica",
+        "maquiagem",
+        "massoterapia-e-terapias-complementares",
+        "pes-e-maos"
+    ],
+    "bem-estar": [
+        "estetica",
+        "massoterapia-e-terapias-complementares",
+        "podologia"
+    ],
+    "comunicacao-e-marketing": [
+        "comunicacao-social",
+        "fotografia",
+        "marketing",
+        "radialismo",
+        "vendas",
+        "visual-merchandising",
+        "audio-e-video"
+    ],
+    "desenvolvimento-social": [],
+    "design-artes-e-arquitetura": [
+        "arquitetura-e-design-de-interiores",
+        "arte-e-cultura",
+        "desenho-e-animacao",
+        "design-grafico-e-digital",
+        "fotografia",
+        "paisagismo-e-jardinagem",
+        "visual-merchandising"
+    ],
+    "educacao": [],
+    "gastronomia-e-alimentacao": [
+        "bebidas-e-servico",
+        "confeitaria",
+        "cozinha",
+        "gestao-de-bares-e-restaurantes",
+        "nutricao",
+        "panificacao"
+    ],
+    "gestao-e-negocios": [
+        "administracao",
+        "atendimento-ao-cliente",
+        "comercio-exterior",
+        "condominio,-limpeza-e-zeladoria",
+        "contabil-e-fiscal",
+        "financas",
+        "gestao-de-pessoas-e-lideranca",
+        "logistica",
+        "secretariado",
+        "vendas"
+    ],
+    "idiomas": [
+        "espanhol",
+        "frances",
+        "ingles",
+        "libras"
+    ],
+    "meio-ambiente-seguranca-e-saude-no-trabalho": [
+        "meio-ambiente",
+        "seguranca-do-trabalho"
+    ],
+    "moda": [
+        "costura-e-modelagem",
+        "criacao-e-producao",
+        "negocios-de-moda"
+    ],
+    "saude": [
+        "educacao-fisica",
+        "enfermagem",
+        "farmacia",
+        "gestao-em-saude",
+        "hemoterapia-e-analises-clinicas",
+        "massoterapia-e-terapias-complementares",
+        "nutricao",
+        "odontologia",
+        "psicologia",
+        "radiologia",
+        "optica"
+    ],
+    "tecnologia-da-informacao": [
+        "banco-de-dados",
+        "certificacao",
+        "computacao-grafica",
+        "criacao-para-web",
+        "games",
+        "gestao-em-ti",
+        "informatica-para-o-trabalho",
+        "manutencao-e-montagem",
+        "programacao-e-desenvolvimento",
+        "redes-e-infraestrutura",
+        "seguranca-da-informacao"
+    ],
+    "turismo-e-hospitalidade": [
+        "eventos",
+        "hotelaria",
+        "lazer-e-recreacao",
+        "turismo"
+    ]
+}
