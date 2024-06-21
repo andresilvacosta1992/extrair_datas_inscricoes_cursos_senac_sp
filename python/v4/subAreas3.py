@@ -1,21 +1,42 @@
+import os
+import json
 from bs4 import BeautifulSoup
 
-# HTML input
-html_content = '''
-<nav class="nav-btn-filter" id="nav-sub-temas">
-<ul><li><a class="todos nav-btn-active">Todos</a></li><li><a data-tema="40609">Cabelo e Barbearia</a></li><li><a data-tema="40607">Depilação</a></li><li><a data-tema="40456">Estética</a></li><li><a data-tema="40482">Maquiagem</a></li><li><a data-tema="40611">Massoterapia e Terapias Complementares</a></li><li><a data-tema="40613">Pés e Mãos</a></li></ul>
-</nav>
-'''
+def extrair_subareas():
+    # Carregar os nomes das áreas do arquivo JSON
+    with open('data/areas.json', 'r', encoding='utf-8') as file:
+        areas = json.load(file)
 
-# Parsear o conteúdo HTML
-soup = BeautifulSoup(html_content, 'lxml')
+    # Processar cada área
+    for area in areas:
+        input_path = f"data/subAreas/subAreas2/{area}.html"
+        output_path = f"data/subAreas/subAreas3/{area}.txt"
 
-# Encontrar o elemento nav pelo seu ID
-nav = soup.find('nav', id='nav-sub-temas')
+        # Garante que o diretório de saída existe
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
-# Encontrar todos os links <a> com o atributo data-tema
-subareas = nav.find_all('a', attrs={"data-tema": True})
+        try:
+            # Abrir o arquivo HTML para leitura
+            with open(input_path, 'r', encoding='utf-8') as file:
+                conteudo = file.read()
 
-# Extrair e imprimir os nomes das subáreas
-for subarea in subareas:
-    print(subarea.text)
+            # Parsear o conteúdo HTML com BeautifulSoup
+            soup = BeautifulSoup(conteudo, 'html.parser')
+
+            # Encontrar todos os elementos <a> com o atributo data-tema
+            subareas = soup.find('nav', id='nav-sub-temas').find_all('a', attrs={"data-tema": True})
+
+            # Abrir o arquivo de saída para escrita
+            with open(output_path, 'w', encoding='utf-8') as file:
+                # Escrever o nome de cada subárea no arquivo de saída
+                for subarea in subareas:
+                    file.write(subarea.text + '\n')
+            print(f"Subáreas extraídas e salvas em: {output_path}")
+
+        except FileNotFoundError:
+            print(f"Erro: O arquivo {input_path} não foi encontrado.")
+        except Exception as e:
+            print(f"Erro ao processar o arquivo {input_path}: {e}")
+
+if __name__ == "__main__":
+    extrair_subareas()
