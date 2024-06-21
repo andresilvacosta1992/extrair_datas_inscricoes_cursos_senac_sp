@@ -1,102 +1,102 @@
 {
     "beleza-e-estetica": [
-        "Cabelo e Barbearia",
-        "Depilação",
-        "Estética",
-        "Maquiagem",
-        "Massoterapia e Terapias Complementares",
-        "Pés e Mãos"
+        "cabelo-e-barbearia",
+        "depilacao",
+        "estetica",
+        "maquiagem",
+        "massoterapia-e-terapias-complementares",
+        "pes-e-maos"
     ],
     "bem-estar": [
-        "Estética",
-        "Massoterapia e Terapias Complementares",
-        "Podologia"
+        "estetica",
+        "massoterapia-e-terapias-complementares",
+        "podologia"
     ],
     "comunicacao-e-marketing": [
-        "Comunicação Social",
-        "Fotografia",
-        "Marketing",
-        "Radialismo",
-        "Vendas",
-        "Visual Merchandising",
-        "Áudio e Vídeo"
+        "comunicacao-social",
+        "fotografia",
+        "marketing",
+        "radialismo",
+        "vendas",
+        "visual-merchandising",
+        "audio-e-video"
     ],
     "desenvolvimento-social": [],
     "design-artes-e-arquitetura": [
-        "Arquitetura e Design de Interiores",
-        "Arte e Cultura",
-        "Desenho e Animação",
-        "Design Gráfico e Digital",
-        "Fotografia",
-        "Paisagismo e Jardinagem",
-        "Visual Merchandising"
+        "arquitetura-e-design-de-interiores",
+        "arte-e-cultura",
+        "desenho-e-animacao",
+        "design-grafico-e-digital",
+        "fotografia",
+        "paisagismo-e-jardinagem",
+        "visual-merchandising"
     ],
     "educacao": [],
     "gastronomia-e-alimentacao": [
-        "Bebidas e Serviço",
-        "Confeitaria",
-        "Cozinha",
-        "Gestão de Bares e Restaurantes",
-        "Nutrição",
-        "Panificação"
+        "bebidas-e-servico",
+        "confeitaria",
+        "cozinha",
+        "gestao-de-bares-e-restaurantes",
+        "nutricao",
+        "panificacao"
     ],
     "gestao-e-negocios": [
-        "Administração",
-        "Atendimento ao Cliente",
-        "Comércio Exterior",
-        "Condomínio, Limpeza e Zeladoria",
-        "Contábil e Fiscal",
-        "Finanças",
-        "Gestão de Pessoas e Liderança",
-        "Logística",
-        "Secretariado",
-        "Vendas"
+        "administracao",
+        "atendimento-ao-cliente",
+        "comercio-exterior",
+        "condominio,-limpeza-e-zeladoria",
+        "contabil-e-fiscal",
+        "financas",
+        "gestao-de-pessoas-e-lideranca",
+        "logistica",
+        "secretariado",
+        "vendas"
     ],
     "idiomas": [
-        "Espanhol",
-        "Francês",
-        "Inglês",
-        "Libras"
+        "espanhol",
+        "frances",
+        "ingles",
+        "libras"
     ],
     "meio-ambiente-seguranca-e-saude-no-trabalho": [
-        "Meio Ambiente",
-        "Segurança do Trabalho"
+        "meio-ambiente",
+        "seguranca-do-trabalho"
     ],
     "moda": [
-        "Costura e Modelagem",
-        "Criação e Produção",
-        "Negócios de Moda"
+        "costura-e-modelagem",
+        "criacao-e-producao",
+        "negocios-de-moda"
     ],
     "saude": [
-        "Educação Física",
-        "Enfermagem",
-        "Farmácia",
-        "Gestão em Saúde",
-        "Hemoterapia e Análises Clínicas",
-        "Massoterapia e Terapias Complementares",
-        "Nutrição",
-        "Odontologia",
-        "Psicologia",
-        "Radiologia",
-        "Óptica"
+        "educacao-fisica",
+        "enfermagem",
+        "farmacia",
+        "gestao-em-saude",
+        "hemoterapia-e-analises-clinicas",
+        "massoterapia-e-terapias-complementares",
+        "nutricao",
+        "odontologia",
+        "psicologia",
+        "radiologia",
+        "optica"
     ],
     "tecnologia-da-informacao": [
-        "Banco de Dados",
-        "Certificação",
-        "Computação Gráfica",
-        "Criação para Web",
-        "Games",
-        "Gestão em TI",
-        "Informática para o Trabalho",
-        "Manutenção e Montagem",
-        "Programação e Desenvolvimento",
-        "Redes e Infraestrutura",
-        "Segurança da Informação"
+        "banco-de-dados",
+        "certificacao",
+        "computacao-grafica",
+        "criacao-para-web",
+        "games",
+        "gestao-em-ti",
+        "informatica-para-o-trabalho",
+        "manutencao-e-montagem",
+        "programacao-e-desenvolvimento",
+        "redes-e-infraestrutura",
+        "seguranca-da-informacao"
     ],
     "turismo-e-hospitalidade": [
-        "Eventos",
-        "Hotelaria",
-        "Lazer e Recreação",
-        "Turismo"
+        "eventos",
+        "hotelaria",
+        "lazer-e-recreacao",
+        "turismo"
     ]
 }

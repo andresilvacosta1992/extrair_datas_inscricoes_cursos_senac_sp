@@ -1,6 +1,13 @@
 import os
 import json
 from bs4 import BeautifulSoup
+import unidecode
+
+def slugify(text):
+    # Transforma texto em slug: minúsculas, sem acentos, espaços por hifens
+    text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
+    text = text.replace(' ', '-')  # Substituir espaços por hifens
+    return text
 
 def subAreas3():
     # Carregar as áreas do arquivo JSON
@@ -25,7 +32,7 @@ def subAreas3():
             subareas = soup.find('nav', id='nav-sub-temas').find_all('a', attrs={"data-tema": True})
 
             # Adicionar subáreas ao dicionário usando a área como chave
-            area_subareas[area] = [subarea.text for subarea in subareas]
+            area_subareas[area] = [slugify(subarea.text) for subarea in subareas]
         
         except FileNotFoundError:
             print(f"Erro: O arquivo {input_path} não foi encontrado.")
