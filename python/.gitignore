@@ -1,5 +1,3 @@
-v2/env2
-v3/env3
-v4/env4
+v[0-9]*/env[0-9]*/
 __pycache__/
 *.pyc
