@@ -6,8 +6,8 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     caminho = "data"  # Define o caminho base para os arquivos
 
     # Construir os caminhos completos para os arquivos de entrada e saída
-    caminhoEntrada = os.path.join(f"{caminho}/{arquivoEntrada}.html")
-    caminhoSaida = os.path.join(f"{caminho}/{arquivoSaida}.html")
+    caminhoEntrada = os.path.join(f"{arquivoEntrada}")
+    caminhoSaida = os.path.join(f"{arquivoSaida}")
 
     try:
         # Abrir o arquivo HTML para leitura
