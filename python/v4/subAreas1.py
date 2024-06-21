@@ -2,7 +2,6 @@ import json
 from downPage import downloadPagina
 
 def download_areas():
-    # Carregar o array de slugs das áreas de um arquivo JSON
     with open('data/areas.json', 'r', encoding='utf-8') as file:
         areas = json.load(file)
     
