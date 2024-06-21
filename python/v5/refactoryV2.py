@@ -58,7 +58,7 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
 def extrairMenu():
     extrairClass('data/cache_html/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/cache_html/menu.html')
 
-def extrairAreas(file_path='data/menu.html', output_path='data/areas.json'):
+def extrairAreas(file_path='data/cache_html/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
@@ -67,6 +67,7 @@ def extrairAreas(file_path='data/menu.html', output_path='data/areas.json'):
     slugs_list = []
     if areas_link and areas_link.find_next_sibling('ul'):
         areas = areas_link.find_next_sibling('ul').find_all('a')
+        print(areas)
         for area in areas:
             url = area['href']
             slug = url.split('/')[-1]
