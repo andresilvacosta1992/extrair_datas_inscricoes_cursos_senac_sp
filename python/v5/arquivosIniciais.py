@@ -20,35 +20,25 @@ def setup_driver():
     chrome_options.add_argument("accept-language=en-US,en;q=0.9")
     chrome_options.add_argument("accept=text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9")
     chrome_options.add_argument("referer=https://www.google.com/")
-
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     return driver
 
-def downloadPagina(link, arquivo, pasta):
+def downloadPagina(link, output_path):
     driver = setup_driver()
     try:
-        url = link
-        driver.get(url)
-        countdown = 2
-        for i in range(countdown, 0, -1):
-            print(f"Aguardando {i} segundos...")
-            time.sleep(1)  
-        caminho_completo = os.path.abspath(os.path.join(os.getcwd(), 'data', pasta, f"{arquivo}.html"))
-        os.makedirs(os.path.dirname(caminho_completo), exist_ok=True)
-        with open(caminho_completo, "w", encoding="utf-8") as file:
+        driver.get(link)
+        time.sleep(2) 
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)
+        with open(output_path, "w", encoding="utf-8") as file:
             file.write(driver.page_source)
-        print(f"download concluído")
+        print(f"Download concluído: {output_path}")
     except Exception as e:
         print(f"Erro ao baixar a página: {e}")
     finally:
         driver.quit()
 
 def downPagePrincipal():
-    link = "https://www.sp.senac.br/"
-    arquivo = "paginaPrincipal"
-    pasta = ""
-    print(f"fazendo download da página principal '{link}'")
-    downloadPagina(link, arquivo, pasta)
+    downloadPagina("https://www.sp.senac.br/", "data/cache_html/paginaPrincipal.html")
 
 def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     os.makedirs(os.path.dirname(arquivoSaida), exist_ok=True)
@@ -65,11 +55,28 @@ def extrairClass(arquivoEntrada, tagClass, arquivoSaida):
     except Exception as e:
         print(f"Erro ao processar o arquivo {arquivoEntrada}: {e}")
 
+def extrairMenuHtml():
+    extrairClass('data/cache_html/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/cache_html/menu.html')
 
-def menu():
-    extrairClass('data/paginaPrincipal.html', 'ssp-mega-menu__wrapper', 'data/menu.html')
+def extrairUnidadesJson():
+    print('iniciando extrairUnidadesJson')
+    os.makedirs(os.path.dirname('data/unidades.json'), exist_ok=True)    
+    with open('data/cache_html/menu.html', 'r', encoding='utf-8') as file:
+        html_content = file.read()
+    soup = BeautifulSoup(html_content, 'html.parser')
+    unidades_dict = {}
+    categorias = [("Capital", "Capital"), ("Grande São Paulo e Litoral", "Grande São Paulo e Litoral"), ("Interior", "Interior")]
+    for nome_cat, identificador in categorias:
+        link = soup.find('a', text=lambda t: t and identificador in t)
+        if link and link.find_next_sibling('ul'):
+            slugs = [a['href'].split('/')[-1] for a in link.find_next_sibling('ul').find_all('a')]
+            unidades_dict[nome_cat] = slugs
 
-def areas(file_path='data/menu.html', output_path='data/areas.json'):
+    with open('data/unidades.json', 'w', encoding='utf-8') as file:
+        json.dump(unidades_dict, file, ensure_ascii=False, indent=4)
+    print(f"Unidades salvas com sucesso em: 'data/unidades.json'")
+
+def extrairAreasJson(file_path='data/cache_html/menu.html', output_path='data/areas.json'):
     os.makedirs(os.path.dirname(output_path), exist_ok=True)
     with open(file_path, 'r', encoding='utf-8') as file:
         html_content = file.read()
@@ -77,7 +84,7 @@ def areas(file_path='data/menu.html', output_path='data/areas.json'):
     areas_link = soup.find('a', text=lambda t: t and 'Áreas' in t)
     slugs_list = []
     if areas_link and areas_link.find_next_sibling('ul'):
-        areas = areas_link.find_next_sibling('ul').find_all('a')
+        areas = areas_link.find_next_sibling('ul').find_all('a')        
         for area in areas:
             url = area['href']
             slug = url.split('/')[-1]
@@ -86,63 +93,51 @@ def areas(file_path='data/menu.html', output_path='data/areas.json'):
         json.dump(slugs_list, output_file, indent=4) 
     print(f"Slugs salvos em: {output_path}")
 
+with open('data/areas.json', 'r', encoding='utf-8') as file:
+        areas = json.load(file)
 
 def download_areas():
-    with open('data/areas.json', 'r', encoding='utf-8') as file:
-        areas = json.load(file)
-    
     for area in areas:
-        downloadPagina(f"https://www.sp.senac.br/areas/{area}", area, 'subAreas/subAreas1')
-        print(f"Download da página '{area}' concluído e salvo em 'subAreas/subAreas1'")
-        extrairClass(f'data/subAreas/subAreas1/{area}.html', 'nav-btn-filter', f'data/subAreas/subAreas2/{area}.html')
-        print(f"foi extraído o html da class 'nav-btn-filter' do arquivo f'data/subAreas/subAreas1/{area}.html' salvo no f'data/subAreas/subAreas2/{area}.html")
-
+        downloadPagina(f"https://www.sp.senac.br/areas/{area}", f'data/cache_html/subAreas/paginas_principais/{area}.html')
+        print(f"Download da página '{area}' concluído")
+        extrairClass(f'data/cache_html/subAreas/paginas_principais/{area}.html', 'nav-btn-filter', f'data/cache_html/subAreas/extracao_codigo_areas/{area}.html')
+        print(f"foi extraído o html da class 'nav-btn-filter' do arquivo {area}.html")
 
 def slugify(text):
-    text = unidecode.unidecode(text).lower()  # Remover acentos e converter para minúsculas
+    text = unidecode.unidecode(text).lower()
     text = text.replace(' ', '-')
     return text
 
-def subAreas3():
-    with open('data/areas.json', 'r', encoding='utf-8') as file:
-        areas = json.load(file)
+def extrairSubAreasJson():
     area_subareas = {}
     for area in areas:
-        input_path = f"data/subAreas/subAreas2/{area}.html"
-        os.makedirs('data/subAreas/subAreas3', exist_ok=True)
-
+        input_path = f"data/cache_html/subAreas/extracao_codigo_areas/{area}.html"
+        os.makedirs('data', exist_ok=True)
         try:
             with open(input_path, 'r', encoding='utf-8') as file:
                 conteudo = file.read()
-
-            # Parsear o conteúdo HTML com BeautifulSoup
             soup = BeautifulSoup(conteudo, 'html.parser')
-
-            # Encontrar todos os elementos <a> com o atributo data-tema
             subareas = soup.find('nav', id='nav-sub-temas').find_all('a', attrs={"data-tema": True})
-
-            # Adicionar subáreas ao dicionário usando a área como chave
-            area_subareas[area] = [slugify(subarea.text) for subarea in subareas]
-        
+            area_subareas[area] = [slugify(subarea.text) for subarea in subareas]        
         except FileNotFoundError:
             print(f"Erro: O arquivo {input_path} não foi encontrado.")
         except Exception as e:
             print(f"Erro ao processar o arquivo {input_path}: {e}")
-
-    # Salvar o dicionário de subáreas em um arquivo JSON
     output_path = 'data/subAreas/subAreas3/subareas.json'
     with open(output_path, 'w', encoding='utf-8') as file:
         json.dump(area_subareas, file, ensure_ascii=False, indent=4)
     print(f"Subáreas extraídas e salvas em JSON em: {output_path}")
 
-    # Copiar o arquivo JSON para a pasta data/
-    destination_path = 'data/subareas.json'
-    shutil.copy(output_path, destination_path)
-    print(f"Cópia do arquivo JSON salva em: {destination_path}")
+
+
+def main():
+    downPagePrincipal()
+    extrairMenuHtml()
+    extrairUnidadesJson()
+    extrairAreasJson()
+    download_areas()
+    extrairSubAreasJson()
+
 
 if __name__ == "__main__":
-    downPagePrincipal()
-    menu()
-    areas()
-    download_areas()
-    subAreas3()
+    main()
